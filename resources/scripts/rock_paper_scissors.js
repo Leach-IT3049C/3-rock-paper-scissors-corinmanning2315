@@ -1,5 +1,3 @@
-const { result } = require("lodash");
-
 class RockPaperScissors {
   constructor(username) {
     this.username = username;
@@ -61,14 +59,18 @@ class RockPaperScissors {
    * 
    * @param {string} userSelection user selection. Can only be one of the following values [`rock`, `paper`, `scissors`]
    */
-  play(userSelection){
-    if(this.determineWinner === 'Win'){
+  play(userSelection)
+  {
+    var winner = determineWinner(userSelection, this.generateCPUResponse)
+    if(winner == 'win')
+    {
       this.score.user ++;
-      this.gameHistoryLog.push("username" + userSelection, "cpu" + cpuSelection, "user" + wins)
+      this.gameHistoryLog.push(this.username + " selected " + userSelection + ", CPU selected" + this.generateCPUResponse + ": " + username + " wins")
     }
-    else if(this.determineWinner === 'Lose'){
+    else if(winner == 'lose')
+    {
       this.score.cpu ++;
-      this.gameHistoryLog.push("username" + userSelection, "cpu" + cpuSelection, "cpu" + wins)
+      this.gameHistoryLog.push(this.username + " selected " + userSelection + ", CPU selected " + this.generateCPUResponse + ": CPU wins")
     }
   }
 
